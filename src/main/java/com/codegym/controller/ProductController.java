@@ -12,18 +12,19 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/products")
 public class ProductController {
     @Autowired
     private IProductService productService;
 
-    @Autowired
-    private ICategoryService categoryService;
-
-    @ModelAttribute("categories")
-    public Iterable<Category> categories() {
-        return categoryService.findAll();
-    }
+//    @Autowired
+//    private ICategoryService categoryService;
+//
+//    @ModelAttribute("categories")
+//    public Iterable<Category> categories() {
+//        return categoryService.findAll();
+//    }
 
     @GetMapping
     public ResponseEntity<Iterable<Product>> findAllProduct(@RequestParam (name = "q") Optional<String> q){
